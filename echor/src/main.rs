@@ -21,4 +21,6 @@ fn main() {
         .get_matches();
 
     println!("{:#?}", matches)
+
+    // cargo run 1>out 2>err
 }
