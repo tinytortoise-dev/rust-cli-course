@@ -25,3 +25,15 @@ fn hello1() -> Result<()> {
     .stdout(expected);
   Ok(())
 }
+
+#[test]
+fn hello2() -> Result<()> {
+  let expected = fs::read_to_string("tests/expected/hello2.txt")?;
+  let mut cmd = Command::cargo_bin("echor")?;
+  cmd
+    .args(vec!["Hello", "there"])
+    .assert()
+    .success()
+    .stdout(expected);
+  Ok(())
+}
