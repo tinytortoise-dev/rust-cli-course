@@ -20,7 +20,14 @@ fn main() {
         )
         .get_matches();
 
-    println!("{:#?}", matches)
+    let text: Vec<String> =
+        matches.get_many("text").unwrap().cloned().collect();
+    let omit_newline = matches.get_flag("omit_newline");
 
-    // cargo run 1>out 2>err
+    print!(
+        "{}{}", 
+        text.join(" "), 
+        if omit_newline { "" } else { "\n" }
+    );
+
 }
